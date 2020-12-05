@@ -27,6 +27,11 @@ public slots:
         }
     }
 
+    void slotResetScale()
+    {
+        emit signalValueChanged(0);
+    }
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -38,5 +43,7 @@ private:
     // QWidget interface
 protected:
     void keyPressEvent(QKeyEvent *event) override;
+private slots:
+    void on_actionAbout_triggered();
 };
 #endif // MAINWINDOW_H

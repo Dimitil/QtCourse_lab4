@@ -14,5 +14,7 @@
         <file>Images_lab4/Water lilies.jpg</file>
         <file>Images_lab4/WomenAndDog.jpg</file>
     </qresource>
-    <qresource lang="ru" prefix="/translations"/>
+    <qresource prefix="/translations" lang="ru">
+        <file>scaleApp_ru.qm</file>
+    </qresource>
 </RCC>
