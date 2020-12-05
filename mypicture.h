@@ -3,14 +3,16 @@
 
 #include <QWidget>
 #include <QPixmap>
+#include <QRubberBand>
 
 class MyPicture : public QWidget
 {
     Q_OBJECT
     QPixmap m_MyPicture;
     int m_scale;
-    double m_x = 0.0;
-    double m_y = 0.0;
+    QRubberBand* rubberBand= nullptr;
+    QPoint clickPos;
+    QPoint releasePos;
 public:
     explicit MyPicture(QWidget *parent = nullptr);
 
@@ -25,8 +27,10 @@ public slots:
     }
 
     void slotResetXY() {
-        m_x = 0.0;
-        m_y = 0.0;
+        m_scale = 1;
+        clickPos = QPoint(0, 0);
+        delete rubberBand;
+        rubberBand = nullptr;
         repaint();
     }
 
@@ -34,6 +38,8 @@ public slots:
     // QWidget interface
 protected:
     void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
 };
 
 #endif // MYPICTURE_H
